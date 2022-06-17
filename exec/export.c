@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 02:27:25 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/16 02:54:09 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/17 23:28:56 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	export2(t_parser *cmd, t_norme *t)
 		t->b = check_export(cmd->arg[t->o], cmd->env, t->i);
 		if (t->b == -1)
 		{
-			if (!check_export2(cmd->arg[t->o]))
+			if (!check_export2(cmd->arg[t->o]) || (cmd->arg[t->o][0] == '\0'))
 				printf("my minishell: export:`%s': not a valid identifier\n",
 					cmd->arg[t->o]);
 			else

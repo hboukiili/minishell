@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 00:24:46 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/16 03:20:23 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/17 23:56:14 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,11 @@ char	*getenv1(t_pipe *s)
 	return (NULL);
 }
 
-char	*get_env(t_p *t, t_parser *tmp, char *str, int x)
+char	*get_env(t_p *t, char *str, int x)
 {
 	t_pipe	*s;
+	char	*m;
 
-	(void)tmp;
 	s = malloc(sizeof(t_pipe));
 	s->p = malloc(2);
 	s->p[0] = '\0';
@@ -112,8 +112,11 @@ char	*get_env(t_p *t, t_parser *tmp, char *str, int x)
 	if (s->ev == NULL)
 	{
 		if (x == 0)
-			printf("bash: $%s: ambiguous redirect\n",
-				ft_substr(s->p, 0, ft_strlen(s->p) - 1));
+		{
+			m = ft_substr(s->p, 0, ft_strlen(s->p) - 1);
+			printf("my minishell: $%s: ambiguous redirect\n", m);
+			free (m);
+		}
 		str = ft_strjoin(str, '\0');
 	}
 	else

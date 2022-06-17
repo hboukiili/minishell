@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 01:37:02 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/16 03:01:37 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/17 23:50:39 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	count_arg(t_p *s)
 	return (x);
 }
 
-char	*quote_value(t_p *s, char *str, t_parser *tmp, int x)
+char	*quote_value(t_p *s, char *str, int x)
 {
 	if (s->string[s->i] == '\'')
 	{
@@ -79,7 +79,7 @@ char	*quote_value(t_p *s, char *str, t_parser *tmp, int x)
 		while (s->string[s->i] != '"')
 		{
 			if (s->string[s->i] == '$')
-				str = dollar_check(s, tmp, str, x);
+				str = dollar_check(s, str, x);
 			else
 				str = ft_strjoin(str, s->string[s->i++]);
 			if (s->string[s->i] == '"')

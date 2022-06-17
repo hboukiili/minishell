@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 03:33:10 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/17 04:57:10 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/17 23:52:44 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,12 @@ t_rdr	*herdoc_stock(t_p *s, t_rdr *r)
 
 t_rdr	*stock_value2(t_p *s, t_rdr *r, int b, t_parser *t)
 {
+	(void)t;
 	if (s->string[s->i] == '\'')
-			r->rdr_value = quote_value(s, r->rdr_value, t, 0);
+			r->rdr_value = quote_value(s, r->rdr_value, 0);
 	if (s->string[s->i] == '"' && b != 3)
 	{
-		r->rdr_value = quote_value(s, r->rdr_value, t, 0);
+		r->rdr_value = quote_value(s, r->rdr_value, 0);
 		if (r->rdr_value == NULL)
 			return (NULL);
 	}
@@ -77,7 +78,7 @@ t_parser	*stock_value(t_p *s, t_rdr *r, int b, t_parser *t)
 				break ;
 			if (s->string[s->i] == '$' && b != 3)
 			{
-				r->rdr_value = dollar_check(s, t, r->rdr_value, 0);
+				r->rdr_value = dollar_check(s, r->rdr_value, 0);
 				if (r->rdr_value == NULL)
 					return (NULL);
 			}

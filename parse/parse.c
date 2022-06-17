@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 00:09:31 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/16 03:13:02 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/17 23:51:12 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char	*cmd_parse(t_p *s, t_parser *t)
 	while (s->string[s->i] != ' ' && s->string[s->i])
 	{
 		if (s->string[s->i] == '"')
-			t->cmd = quote_value(s, t->cmd, t, 1);
+			t->cmd = quote_value(s, t->cmd, 1);
 		if (s->string[s->i] == '\'')
-			t->cmd = quote_value(s, t->cmd, t, 1);
+			t->cmd = quote_value(s, t->cmd, 1);
 		if (s->string[s->i] == '$')
-			t->cmd = dollar_check(s, t, t->cmd, 1);
+			t->cmd = dollar_check(s, t->cmd, 1);
 		if (s->string[s->i] == '>' || s->string[s->i] == '<')
 			break ;
 		if (s->string[s->i] != '"' && s->string[s->i] != '\''
@@ -43,11 +43,11 @@ char	*arg_parse(t_p *s, t_parser *tmp)
 			|| s->string[s->i] == '<')
 			break ;
 		if (s->string[s->i] == '"')
-			tmp->arg[tmp->i] = quote_value(s, tmp->arg[tmp->i], tmp, 1);
+			tmp->arg[tmp->i] = quote_value(s, tmp->arg[tmp->i], 1);
 		if (s->string[s->i] == '\'')
-			tmp->arg[tmp->i] = quote_value(s, tmp->arg[tmp->i], tmp, 1);
+			tmp->arg[tmp->i] = quote_value(s, tmp->arg[tmp->i], 1);
 		if (s->string[s->i] == '$')
-			tmp->arg[tmp->i] = dollar_check(s, tmp, tmp->arg[tmp->i], 1);
+			tmp->arg[tmp->i] = dollar_check(s, tmp->arg[tmp->i], 1);
 		if (s->string[s->i] != ' ' && s->string[s->i] != '\''
 			&& s->string[s->i] != '"' && s->string[s->i] != '\0'
 			&& s->string[s->i] != '$')
@@ -63,9 +63,9 @@ char	*opt_parse(t_p *s, t_parser *tmp)
 	while (s->string[s->i] != ' ' && s->string[s->i])
 	{
 		if (s->string[s->i] == '\'')
-			tmp->opt = quote_value(s, tmp->opt, tmp, 1);
+			tmp->opt = quote_value(s, tmp->opt, 1);
 		if (s->string[s->i] == '"')
-			tmp->opt = quote_value(s, tmp->opt, tmp, 1);
+			tmp->opt = quote_value(s, tmp->opt, 1);
 		if (s->string[s->i] != '\'' && s->string[s->i] != '"'
 			&& s->string[s->i] != ' ' && s->string[s->i] != '\0')
 			tmp->opt = ft_strjoin(tmp->opt, s->string[s->i++]);

@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 01:44:13 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/16 02:59:58 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/17 23:49:10 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@ int	count_pipes(char *s)
 		if (s[i] == '"' || s[i] == '\'')
 		{
 			i++;
-			while (s[i] != '"' && s[i] != '\''
-				&& s[i])
+			while (s[i] && s[i] != '"'
+				&& s[i] != '\'')
 				i++;
-			i++;
+			if (s[i] != '\0')
+				i++;
 		}
 		if (s[i] == '|')
 			x++;
@@ -55,7 +56,7 @@ int	count_pipes(char *s)
 	return (x);
 }
 
-char	*dollar_check(t_p *s, t_parser *tmp, char *str, int x)
+char	*dollar_check(t_p *s, char *str, int x)
 {
 	char	*tmp1;
 
@@ -78,7 +79,7 @@ char	*dollar_check(t_p *s, t_parser *tmp, char *str, int x)
 	}
 	else if (ft_isalpha(s->string[s->i])
 		|| s->string[s->i] == '_')
-		str = get_env(s, tmp, str, x);
+		str = get_env(s, str, x);
 	else
 		str = ft_strjoin(str, '$');
 	return (str);

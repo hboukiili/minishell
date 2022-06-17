@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 19:41:57 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/17 04:16:38 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/17 23:50:33 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void		add_back_rdr(t_rdr *tmp, t_rdr **node);
 void		add_last(t_p *tmp, t_p **node);
 t_p			*ps_creation(char *l);
 char		*double_quote(t_pipe *s);
-char		*get_env(t_p *t, t_parser *tmp, char *str, int x);
+char		*get_env(t_p *t, char *str, int x);
 char		*single_quote(t_pipe *s);
 char		*check_env(char *ev, t_p *s);
 int			count_char(char *s, int i);
@@ -132,7 +132,7 @@ int			ft_mycmd(t_parser *cmd);
 int			ft_arrlen(char **env);
 char		*ft_strjoin_s(char *s1, char *s2);
 char		**add_ev( char **env);
-char		*dollar_check(t_p *s, t_parser *tmp, char *str, int x);
+char		*dollar_check(t_p *s, char *str, int x);
 void		r_errors1(t_p *s);
 t_p			*error_r2(t_p *s);
 t_p			*error_r3(t_p *s);
@@ -141,7 +141,7 @@ t_p			*error_r1(t_p *s);
 t_rdr		*rdr_creation(t_p *s, t_parser *tmp);
 int			quotes_c(t_p *s, t_norme *l);
 int			count_arg(t_p *s);
-char		*quote_value(t_p *s, char *str, t_parser *tmp, int x);
+char		*quote_value(t_p *s, char *str, int x);
 t_parser	*creation_parser_n(t_parser *tmp, t_p *s);
 char		*cmd_parse(t_p *s, t_parser *t);
 char		*arg_parse(t_p *s, t_parser *tmp);

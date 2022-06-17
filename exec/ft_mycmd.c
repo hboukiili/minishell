@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 21:53:02 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/06/17 20:02:45 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 00:01:14 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	open_der(t_parser *cmd, int *fd)
 		if (cmd->rdr->type == 2)
 		{
 			fd[0] = cmd->rdr->fd;
-			if (fd[0] == -1)
+			if (fd[0] == -1 && cmd->rdr->rdr_value[0] != '\0')
 				printf("my minishell: %s: No such file or directory\n",
 					cmd->rdr->rdr_value);
 		}
