@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 02:02:04 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/18 05:45:18 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 07:14:00 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ t_child	*ft_child3(t_child *t, t_parser *tmp)
 	{
 		if (execve(t->splt[0], t->splt, g_f->old_env) == -1)
 		{
+			ft_putstr_fd("my minishell: ", 2);
 			ft_putstr_fd(tmp->cmd, 2);
-			printf("my minishell: %s: command not found\n", tmp->cmd);
+			ft_putstr_fd(": command not found\n", 2);
 			exit(127);
 		}
 		exit (0);
@@ -65,11 +66,6 @@ t_child	*ft_child2(t_child *t, t_parser *tmp)
 	{
 		g_f->p = 0;
 		exit(0);
-	}
-	if (!ft_strchr(t->splt[0], '/') && t->splt[0] != '\0')
-	{
-		printf("my minishell: %s: command not found\n", tmp->cmd);
-		exit(127);
 	}
 	return (t);
 }

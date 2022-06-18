@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 01:44:13 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/18 05:55:48 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 07:06:07 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_norme	*skip_quote(t_norme *t, char *s)
 int	count_pipes(char *s)
 {
 	t_norme	*t;
+	int		x;
 
 	t = malloc(sizeof(t_norme));
 	t->x = 1;
@@ -67,8 +68,9 @@ int	count_pipes(char *s)
 			break ;
 		t->i++;
 	}
+	x = t->x;
 	free (t);
-	return (t->x);
+	return (x);
 }
 
 char	*dollar_check(t_p *s, char *str, int x)

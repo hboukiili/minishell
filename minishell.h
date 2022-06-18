@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 19:41:57 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/18 01:23:36 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 07:03:30 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,5 +195,6 @@ void		cd_cmd(t_parser *tmp);
 int			exit_0(t_parser *tmp);
 void		close_function(t_child *t);
 char		*exit_sort(char *str);
+t_pipe		*error_cases3(t_pipe *s);
 
 #endif

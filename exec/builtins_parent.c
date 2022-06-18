@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 02:37:16 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/18 05:59:42 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 07:03:18 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ t_pipe	*error_cases3(t_pipe *s)
 			error(1);
 		return (NULL);
 	}
+	return (s);
 }

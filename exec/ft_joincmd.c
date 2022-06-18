@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 13:48:30 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/06/18 05:48:33 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 07:04:00 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_count(t_parser *cmd)
 {
 	int	count;
 
+	count = 0;
 	if (cmd->arg != NULL)
 		count = ft_arrlen(cmd->arg);
 	if (cmd->opt != NULL)
