@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 23:51:10 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/17 07:05:16 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 05:58:56 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,9 @@ t_pipe	*error_cases(t_pipe *s)
 		return (NULL);
 	}
 	if (s->content[s->i] == ' ' && s->i == 0)
-	{
-		skipspaces1(s);
-		if (s->content[s->i] == '\0')
-		{
-			free(s->l);
-			return (NULL);
-		}
-	}
-	s = error_cases2(s);
+		s = error_cases3(s);
+	if (s != NULL)
+		s = error_cases2(s);
 	if (s == NULL)
 		return (NULL);
 	return (s);

@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 02:29:05 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/17 20:07:03 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 05:44:44 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,7 @@ void	init_minishell(t_pipe *s, t_parser *parse, t_p *ps)
 	if (s->content == NULL)
 	{
 		printf("exit\n");
-		free_env();
-		free(g_f);
-		free_functions(ps, parse, s);
-		exit(0);
+		exit(g_f->exit_code);
 	}
 	if (s->content[0])
 	{

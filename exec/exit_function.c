@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:43:41 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/17 03:51:16 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 05:45:43 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ int	exit_function3(t_parser *cmd, int i, long long x)
 	{
 		if (x > 255)
 			x %= 256;
+		if (x == 2)
+			g_f->a = 2;
+		if (x == 3)
+			g_f->a = 3;
 	}
 	return (x);
 }
@@ -100,15 +104,29 @@ int	exit_0(t_parser *tmp)
 	return (0);
 }
 
-void	close_function(t_child *t)
+char	*exit_sort(char *str)
 {
-	close(t->fd[1]);
-	if (t->in != 0)
-		close (t->in);
-	t->in = t->fd[0];
-	if (t->fd_der[1] != 1 && t->fd_der[1] != 0)
-		close(t->fd_der[1]);
-	if (t->fd_der[0] != 1 && t->fd_der[0] != 0)
-		close(t->fd_der[0]);
-	free(t->fd_der);
+	char	*tmp;
+
+	if (g_f->exit_code > 255)
+		g_f->exit_code /= 255;
+	if (g_f->exit_code == 256)
+		g_f->exit_code = 255;
+	else if (g_f->exit_code == 2 && g_f->a != 3)
+		g_f->p = 130;
+	else if (g_f->exit_code == 3 && g_f->a != 3)
+		g_f->p = 131;
+	if (g_f->flg == -1)
+		g_f->p = 1;
+	if (g_f->a == 1)
+		g_f->p = 1;
+	if (g_f->a == 2)
+		g_f->p = 2;
+	if (g_f->a == 3)
+		g_f->p = 3;
+	tmp = ft_itoa(g_f->p);
+	str = ft_strjoin_s(str, tmp);
+	free(tmp);
+	g_f->a = 0;
+	return (str);
 }

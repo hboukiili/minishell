@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 01:44:13 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/17 23:49:10 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 05:55:48 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,42 +29,53 @@ char	*check_env(char *ev, t_p *s)
 	return (ev);
 }
 
+t_norme	*skip_quote(t_norme *t, char *s)
+{
+	if (s[t->i] == '"')
+	{
+		t->i++;
+		while (s[t->i] != '"')
+			t->i++;
+		if (s[t->i] != '\0')
+			t->i++;
+	}
+	if (s[t->i] == '\'')
+	{
+		t->i++;
+		while (s[t->i] != '\'')
+			t->i++;
+		if (s[t->i] != '\0')
+			t->i++;
+	}
+	return (t);
+}
+
 int	count_pipes(char *s)
 {
-	int	i;
-	int	x;
+	t_norme	*t;
 
-	x = 1;
-	i = 0;
-	while (s[i])
+	t = malloc(sizeof(t_norme));
+	t->x = 1;
+	t->i = 0;
+	while (s[t->i])
 	{
-		if (s[i] == '"' || s[i] == '\'')
-		{
-			i++;
-			while (s[i] && s[i] != '"'
-				&& s[i] != '\'')
-				i++;
-			if (s[i] != '\0')
-				i++;
-		}
-		if (s[i] == '|')
-			x++;
-		if (s[i] == '\0')
+		if (s[t->i] == '\'' || s[t->i] == '"')
+			t = skip_quote(t, s);
+		if (s[t->i] == '|')
+			t->x++;
+		if (s[t->i] == '\0')
 			break ;
-		i++;
+		t->i++;
 	}
-	return (x);
+	free (t);
+	return (t->x);
 }
 
 char	*dollar_check(t_p *s, char *str, int x)
 {
-	char	*tmp1;
-
 	if (s->string[++s->i] == '?')
 	{
-		tmp1 = ft_itoa(g_f->p);
-		str = ft_strjoin_s(str, tmp1);
-		free(tmp1);
+		str = exit_sort(str);
 		s->i++;
 	}
 	else if (ft_isdigit(s->string[s->i]))
@@ -75,7 +86,7 @@ char	*dollar_check(t_p *s, char *str, int x)
 	else if (s->string[s->i] == '$')
 	{
 		s->i++;
-		str = ft_strjoin(str, '\0');
+		str = ft_strjoin_s(str, "$$");
 	}
 	else if (ft_isalpha(s->string[s->i])
 		|| s->string[s->i] == '_')

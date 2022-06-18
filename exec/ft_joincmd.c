@@ -6,31 +6,46 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 13:48:30 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/06/17 20:13:36 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 05:48:33 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+int	ft_count(t_parser *cmd)
+{
+	int	count;
+
+	if (cmd->arg != NULL)
+		count = ft_arrlen(cmd->arg);
+	if (cmd->opt != NULL)
+		count += 1;
+	if (cmd->cmd != NULL)
+		count += 1;
+	return (count);
+}
+
 char	**ft_joincmd(t_parser *cmd)
 {
-	char	*join;
 	char	**splt;
 	int		i;
+	int		j;
 
 	i = 0;
-	join = ft_strjoin_n(cmd->cmd, " ");
-	join = ft_strjoin_s(join, cmd->opt);
-	if (cmd->arg == NULL)
-		return (ft_split(join, ' '));
-	while (cmd->arg[i])
+	j = 0;
+	splt = malloc (sizeof(char *) * (ft_count(cmd) + 1));
+	if (cmd->cmd != NULL)
 	{
-		join = ft_strjoin(join, ' ');
-		join = ft_strjoin_s(join, cmd->arg[i]);
-		i++;
+		splt[i++] = ft_strdup(cmd->cmd);
+		if (cmd->opt != NULL)
+			splt[i++] = ft_strdup(cmd->opt);
+		if (cmd->arg != NULL)
+		{
+			while (cmd->arg[j])
+				splt[i++] = ft_strdup(cmd->arg[j++]);
+		}
+		splt[i] = NULL;
 	}
-	splt = ft_split(join, ' ');
-	free (join);
 	return (splt);
 }
 

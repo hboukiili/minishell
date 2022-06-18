@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 02:02:04 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/18 00:00:02 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 05:45:18 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ void	ft_child(t_child *t, t_parser *tmp)
 	t->fd_der = malloc(sizeof(int) * 2);
 	t->fd_der[1] = 0;
 	t->fd_der[0] = 0;
+	open_der(tmp, t->fd_der);
 	pipe(t->fd);
 	t->out = t->fd[1];
-	open_der(tmp, t->fd_der);
 	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
 	t->pid = fork();

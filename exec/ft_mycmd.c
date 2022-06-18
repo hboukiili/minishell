@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 21:53:02 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/06/18 00:01:14 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 05:49:27 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,11 @@ void	open_der(t_parser *cmd, int *fd)
 		{
 			fd[0] = cmd->rdr->fd;
 			if (fd[0] == -1 && cmd->rdr->rdr_value[0] != '\0')
+			{
 				printf("my minishell: %s: No such file or directory\n",
 					cmd->rdr->rdr_value);
+				g_f->a = 1;
+			}
 		}
 		if (cmd->rdr->type == 0 || cmd->rdr->type == 1)
 			fd[1] = cmd->rdr->fd;
@@ -65,26 +68,13 @@ void	wait_function(t_parser *cmd)
 		wait(&g_f->exit_code);
 		if (WIFEXITED(g_f->exit_code))
 			g_f->p = WEXITSTATUS (g_f->exit_code);
-		if (g_f->exit_code > 255)
-			g_f->exit_code /= 255;
-		if (g_f->exit_code == 256)
-			g_f->exit_code = 255;
-		else if (g_f->exit_code == 2)
-			g_f->p = 130;
-		else if (g_f->exit_code == 3)
-			g_f->p = 131;
-		if (g_f->flg == -1)
-			g_f->p = 1;
 		tmp = tmp ->next;
 	}
 }
 
 int	ft_mycmd_2(t_child *t, t_parser *tmp, t_parser *cmd)
 {
-	if ((!ft_strncmp(tmp->cmd, "cd", 2) && ft_strlen(tmp->cmd) == 2)
-		&& tmp->next == NULL)
-		cd_cmd(tmp);
-	else if ((!ft_strncmp(tmp->cmd, "export", 6) && ft_strlen(tmp->cmd) == 6)
+	if ((!ft_strncmp(tmp->cmd, "export", 6) && ft_strlen(tmp->cmd) == 6)
 		&& cmd->next == NULL)
 	{
 		if (tmp->opt != NULL || tmp->arg != NULL)
@@ -114,11 +104,15 @@ int	ft_mycmd(t_parser *cmd)
 	t = malloc(sizeof(t_child));
 	t->in = 0;
 	t->out = 1;
+	t->splt = NULL;
 	cmd->env = g_f->old_env;
 	tmp = cmd;
 	while (tmp)
 	{
-		if (ft_mycmd_2(t, tmp, cmd) == 1)
+		if ((tmp->cmd != NULL && !ft_strncmp(tmp->cmd, "cd", 2)
+				&& ft_strlen(cmd->cmd) == 2) && tmp->next == NULL)
+			cd_cmd(tmp);
+		else if (ft_mycmd_2(t, tmp, cmd) == 1)
 			return (1);
 		tmp = tmp->next;
 	}

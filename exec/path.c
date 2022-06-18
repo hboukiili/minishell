@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 01:32:54 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/17 20:13:50 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 03:28:32 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,12 +101,14 @@ char	**edit_ev(char	**str, char *pwd, char *oldpwd)
 			free(str[i]);
 			buff = ft_strjoin_n("PWD=", pwd);
 			str[i] = ft_strdup(buff);
+			free(buff);
 		}
 		if (!ft_strncmp("OLDPWD", str[i], 6))
 		{
 			buff = ft_strjoin_n("OLDPWD=", oldpwd);
 			free(str[i]);
 			str[i] = ft_strdup(buff);
+			free(buff);
 		}
 		i++;
 	}

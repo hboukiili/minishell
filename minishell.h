@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 19:41:57 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/17 23:50:33 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 01:23:36 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct env_exit
 	int		p;
 	int		fdex;
 	int		flg;
+	int		a;
 	char	oldpwd[255];
 	char	pwd[255];
 }	t_ex;
@@ -193,5 +194,6 @@ char		**edit_ev(char	**str, char *pwd, char *oldpwd);
 void		cd_cmd(t_parser *tmp);
 int			exit_0(t_parser *tmp);
 void		close_function(t_child *t);
+char		*exit_sort(char *str);
 
 #endif

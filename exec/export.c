@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 02:27:25 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/17 23:28:56 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/06/18 05:30:44 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	export1(t_parser *cmd)
 	{
 		printf("my minishell: export:`%s': not a valid identifier\n",
 			cmd->opt);
+		g_f->a = 1;
 		return ;
 	}
 	if (cmd->arg == NULL)
@@ -47,8 +48,11 @@ void	export2(t_parser *cmd, t_norme *t)
 		if (t->b == -1)
 		{
 			if (!check_export2(cmd->arg[t->o]) || (cmd->arg[t->o][0] == '\0'))
+			{
 				printf("my minishell: export:`%s': not a valid identifier\n",
 					cmd->arg[t->o]);
+				g_f->a = 1;
+			}
 			else
 				cmd->env[t->i++] = ft_strdup(cmd->arg[t->o]);
 		}
