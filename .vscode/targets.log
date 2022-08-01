@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Mon Aug  1 22:58:31 2022
+# Make data base, printed on Mon Aug  1 23:12:57 2022
 
 # Variables
 
@@ -23,7 +23,6 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 @F = $(notdir $@)
 # makefile
- 
 CURDIR := /Users/hboukili/Desktop/minishell
 # makefile
 SHELL = /bin/sh
@@ -107,6 +106,7 @@ TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n0000jgm0004bx/T/
 *F = $(notdir $*)
 # environment
 VSCODE_IPC_HOOK = /Users/hboukili/Library/Application Support/Code/1.69.1-main.sock
+ 
 # environment
 MallocNanoZone = 0
 # makefile
@@ -138,7 +138,7 @@ LC_ALL = C
 # default
 SUFFIXES := 
 # makefile (from `Makefile', line 4)
-FLAGS = -lreadline -Wall -Wextra -Werror 
+FLAGS = -lreadline -Wall -Wextra -Werror -fsanitize=address -g3
 # default
 .INCLUDE_DIRS = /usr/local/include
 # environment
@@ -335,7 +335,6 @@ libft_m/ft_strnstr.c:
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
- 
 # Not a target:
 libft_m/ft_putstr_fd.c:
 #  Implicit rule search has been done.
@@ -363,7 +362,7 @@ parse/redirections_error.c:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-01 22:56:54
+#  Last modified 2022-08-01 23:11:50
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -417,12 +416,13 @@ libft_m/ft_strtrim.c:
 # Not a target:
 parse/functions2.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-01 22:52:27
+#  Last modified 2022-08-01 22:59:36
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
+ 
 # Not a target:
 libft_m/ft_putendl_fd.c:
 #  Implicit rule search has been done.
@@ -452,7 +452,7 @@ exec/exec_check_functions.c:
 
 minishell: main.c parse/ft_strjoin.c parse/functions2.c parse/linked_list_utils.c parse/parse.c parse/parse_helper.c parse/parse_helper2.c parse/pipe_linex.c parse/quotes.c parse/redirection_stock_value.c parse/redirections.c parse/redirections_error.c parse/utiles2.c parse/utils.c exec/builtins_child.c exec/builtins_parent.c exec/child.c exec/echo_env.c exec/exec_check_functions.c exec/exec_functions.c exec/exit_function.c exec/export.c exec/ft_joincmd.c exec/ft_mycmd.c exec/path.c exec/unset.c libft_m/ft_atoi.c libft_m/ft_bzero.c libft_m/ft_calloc.c libft_m/ft_isalnum.c libft_m/ft_isalpha.c libft_m/ft_isascii.c libft_m/ft_isdigit.c libft_m/ft_isprint.c libft_m/ft_itoa.c libft_m/ft_memchr.c libft_m/ft_memcmp.c libft_m/ft_memcpy.c libft_m/ft_memmove.c libft_m/ft_memset.c libft_m/ft_putchar_fd.c libft_m/ft_putendl_fd.c libft_m/ft_putnbr_fd.c libft_m/ft_putstr_fd.c libft_m/ft_split.c libft_m/ft_strchr.c libft_m/ft_strdup.c libft_m/ft_striteri.c libft_m/ft_strlcat.c libft_m/ft_strlcpy.c libft_m/ft_strlen.c libft_m/ft_strmapi.c libft_m/ft_strncmp.c libft_m/ft_strnstr.c libft_m/ft_strrchr.c libft_m/ft_strtrim.c libft_m/ft_substr.c libft_m/ft_tolower.c libft_m/ft_toupper.c
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-01 22:57:01
+#  Last modified 2022-08-01 23:11:56
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -597,7 +597,6 @@ parse/parse_helper.c:
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
- 
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
@@ -684,12 +683,13 @@ libft_m/ft_striteri.c:
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
+ 
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 parse/redirection_stock_value.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-01 22:52:27
+#  Last modified 2022-08-01 23:11:23
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -780,6 +780,6 @@ libft_m/ft_isalpha.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Aug  1 22:58:31 2022
+# Finished Make data base on Mon Aug  1 23:12:57 2022
 
  
