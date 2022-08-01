@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 23:51:10 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/18 05:58:56 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/08/01 23:16:51 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_pipe	*cases_2(t_pipe *s)
 			return (NULL);
 	}
 	if (s->content[s->i] != '"' && s->content[s->i] != '\''
-		&& s->content[s->i] != '\0')
+		&& s->content[s->i] != '\0' && s->content[s->i] != '|')
 		s->l = ft_strjoin(s->l, s->content[s->i++]);
 	if (s->content[s->i] == '|' && (s->content[s->i + 1] == '\0'))
 	{
