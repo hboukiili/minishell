@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/hboukili/Desktop/minishell'
+make: `all' is up to date.
+make: Leaving directory `/Users/hboukili/Desktop/minishell'
+ 

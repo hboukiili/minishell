@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 02:29:05 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/18 05:44:44 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/08/01 22:53:06 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	handler(int i)
 	}
 	else
 	{
-		rl_replace_line("", 0);
+		// rl_replace_line("", 0);
 		ft_putchar_fd('\n', 1);
 		rl_on_new_line();
 		rl_redisplay();

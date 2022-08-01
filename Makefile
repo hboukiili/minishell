@@ -1,7 +1,7 @@
 src = *.c ./parse/*.c ./exec/*.c ./libft_m/*.c
 minishell = minishell
 RDLINE        := -L/Users/hboukili/goinfre/.brew/opt/readline/lib -I /Users/hboukili/goinfre/.brew/opt/readline/include
-FLAGS =  -lreadline -Wall -Wextra -Werror -fsanitize=address -g3
+FLAGS =  -lreadline -Wall -Wextra -Werror #-fsanitize=address -g3
 CC = cc
 
 all : minishell

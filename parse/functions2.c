@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 01:44:13 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/18 07:06:07 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/08/01 22:59:36 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,16 @@ int	count_pipes(char *s)
 	t->i = 0;
 	while (s[t->i])
 	{
-		if (s[t->i] == '\'' || s[t->i] == '"')
+		if (s[t->i] == '\'')
+			t = skip_quote(t, s);
+		if (s[t->i] == '"')
 			t = skip_quote(t, s);
 		if (s[t->i] == '|')
 			t->x++;
 		if (s[t->i] == '\0')
 			break ;
-		t->i++;
+		if(s[t->i] != '\'' && s[t->i] != '"')
+			t->i++;
 	}
 	x = t->x;
 	free (t);
