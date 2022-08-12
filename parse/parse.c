@@ -6,7 +6,7 @@
 /*   By: hboukili <hboukili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 00:09:31 by hboukili          #+#    #+#             */
-/*   Updated: 2022/06/18 04:25:00 by hboukili         ###   ########.fr       */
+/*   Updated: 2022/08/12 22:52:55 by hboukili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,15 @@ char	*opt_parse(t_p *s, t_parser *tmp)
 {
 	tmp->opt = malloc(2);
 	tmp->opt[0] = '\0';
-	while (s->string[s->i] != ' ' && s->string[s->i])
+	while (s->string[s->i])
 	{
 		if (s->string[s->i] == '\'')
 			tmp->opt = quote_value(s, tmp->opt, 1);
 		if (s->string[s->i] == '"')
 			tmp->opt = quote_value(s, tmp->opt, 1);
+		if (s->string[s->i] == ' ' || s->string[s->i] == '>'
+			|| s->string[s->i] == '<')
+			break ;
 		if (s->string[s->i] != '\'' && s->string[s->i] != '"'
 			&& s->string[s->i] != ' ' && s->string[s->i] != '\0')
 			tmp->opt = ft_strjoin(tmp->opt, s->string[s->i++]);

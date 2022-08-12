@@ -1,5 +1,6 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/hboukili/Desktop/minishell'
-make: `all' is up to date.
+cc -lreadline -Wall -Wextra -Werror -fsanitize=address -g3 -L/Users/hboukili/goinfre/.brew/opt/readline/lib -I /Users/hboukili/goinfre/.brew/opt/readline/include *.c ./parse/*.c ./exec/*.c ./libft_m/*.c -o minishell
+tput setaf 2; echo "MINISHELL IS READY"
 make: Leaving directory `/Users/hboukili/Desktop/minishell'
  
